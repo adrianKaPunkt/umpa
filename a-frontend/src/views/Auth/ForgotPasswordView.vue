@@ -20,7 +20,7 @@
                         type="button"
                         class="inline-block w-full rounded-lg bg-blue-500 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-blue-600 hover:shadow-md focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
                     >
-                        <span class="mr-2 inline-block">Login</span>
+                        <span class="mr-2 inline-block">Senden</span>
                     </button>
                 </div>
                 <div class="py-5">
