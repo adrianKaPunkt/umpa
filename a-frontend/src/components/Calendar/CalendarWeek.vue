@@ -2,55 +2,80 @@
     <section class="mt-10 grid grid-cols-9">
         <!-- TABLE-HEADER -->
         <div
-            class="col-span-2 col-start-1 m-1 h-20 rounded-md bg-indigo-800 text-center"
+            class="col-span-2 col-start-1 m-1 flex h-20 items-center justify-center rounded-md bg-gray-800 text-center"
         ></div>
-        <div v-for="day in days" :key="day">
-            <div class="m-1 h-20 rounded-md bg-indigo-800 text-center">
-                <span>{{ day }}</span>
+        <!-- HEADER -->
+        <div v-for="(day, index) in 7" :key="index">
+            <div
+                class="text-gray-00 m-1 flex h-20 flex-col items-center justify-center rounded-md bg-gray-800 text-center text-gray-400"
+            >
+                <span class="flex flex-col font-semibold">{{
+                    selected.add(index, "d").format("dddd")
+                }}</span>
+                <span>{{ selected.add(index, "d").format("DD. MMM YY") }}</span>
             </div>
         </div>
     </section>
-    <div v-for="user in users" :key="user" class="grid grid-cols-9">
-        <!-- USER -->
+    <!-- USER -->
+    <div v-for="(user, index) in users" :key="index" class="grid grid-cols-9">
+        <!-- MONTAG -->
         <div
-            class="col-span-2 col-start-1 m-1 h-20 rounded-md bg-indigo-800 pt-2 pl-3"
+            class="col-span-2 col-start-1 m-1 flex h-20 items-center rounded-md bg-gray-800 pl-6 text-gray-300"
         >
             <span class="justify-center align-middle">{{ user }}</span>
         </div>
         <div
             :id="user"
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
+        <!-- DIENSTAG -->
+        <CalendarSlot
+            :id="user"
+            class="day"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+        />
+        <!-- MITTWOCH -->
         <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :id="user"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
+        <!-- DONNERSTAG -->
         <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :id="user"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
+        <!-- FREITAG -->
         <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :id="user"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
+        <!-- SAMSTAG -->
         <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :id="user"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
+        <!-- SONNTAG -->
         <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
-        ></div>
-        <div
-            class="m-1 h-20 rounded-md bg-indigo-800 text-center hover:bg-indigo-600"
+            :id="user"
+            :date="`${selected.format('YYYY-MM-DD')}`"
+            class="m-1 h-20 rounded-md bg-gray-800 text-center hover:bg-gray-600"
         ></div>
     </div>
 </template>
 
 <script setup>
+import CalendarSlot from "@/components/Calendar/CalendarSlot.vue";
+const props = defineProps({
+    selected: {
+        type: Object,
+        required: true,
+    },
+});
+console.log(props);
 const users = ["Adrian", "Christian", "Lara", "Matthias", "Alicia", "Zizi"];
-const days = [
-    "Montag",
-    "Dienstag",
-    "Mittwoch",
-    "Donnerstag",
-    "Freitag",
-    "Samstag",
-    "Sonntag",
-];
 </script>
